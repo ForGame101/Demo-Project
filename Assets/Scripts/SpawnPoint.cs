@@ -36,7 +36,10 @@ public class SpawnPoint : MonoBehaviour
 		}
 	}
 
-	void Awake()
+    // Script örneği yüklendiğinde awake çalışır.
+    // Eğer objenin x ya da z eksenindeki açısı 0 değilse error mesajı verir.
+    
+    void Awake()
 	{
 		PointTransform = transform;
 #if UNITY_EDITOR
@@ -46,10 +49,15 @@ public class SpawnPoint : MonoBehaviour
         }
 #endif
     }
+
+    // SpawnTimer'a 2 değerini atar.
+
     public void StartTimer()
 	{
 		SpawnTimer = 2f;
 	}
+
+    // SpawnTimer değeri 0 dan yüksekse SpawnTimer Time.deltaTime kadar azalır.
 
 	private void Update()
 	{

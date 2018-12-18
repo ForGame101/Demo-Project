@@ -6,6 +6,7 @@ public class DummyPlayer : MonoBehaviour
 	public PlayerTeam PlayerTeamValue;
 	public bool Disabled;
 	public bool _IsDead;
+        
 	public bool IsDead()
 	{
 		return _IsDead;
