@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
         return spawnPoint;
     }
 
-    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının düşmanlara olan uzaklığı maksimim uzaklıktan büyük olduğu sürece uygun spawn noktaları ekler.
+    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının düşmanlara olan uzaklığı minimum düşman uzaklığında büyük olduğu sürece uygun spawn noktaları ekler.
 
     private void GetSpawnPointsByDistanceSpawning(PlayerTeam team, ref List<SpawnPoint> suitableSpawnPoints) // Düşmana olan uzaklığa göre spawn noktasını seçmek için method
     {
@@ -95,7 +95,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının dostlara olan uzaklığı maksimim uzaklıktan küçük olduğu sürece uygun spawn noktaları ekler.
+    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının dostlara olan uzaklığı maksimim dost uzaklığında küçük olduğu sürece uygun spawn noktaları ekler.
 
     private void GetSpawnPointsBySquadSpawning(PlayerTeam team, ref List<SpawnPoint> suitableSpawnPoints) // Dostlara olan uzaklığa göre spawn noktasını seçmek için method
     {
