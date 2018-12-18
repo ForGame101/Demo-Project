@@ -51,7 +51,7 @@ public class SpawnManager : MonoBehaviour
     {
         List<SpawnPoint> spawnPoints = new List<SpawnPoint>(_sharedSpawnPoints.Count);
         CalculateDistancesForSpawnPoints(team);
-        GetSpawnPointsByDistanceSpawning(team, ref spawnPoints);
+        //GetSpawnPointsByDistanceSpawning(team, ref spawnPoints);
         if (spawnPoints.Count <= 0)
         {
             GetSpawnPointsBySquadSpawning(team, ref spawnPoints);
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
         return spawnPoint;
     }
 
-    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının düşmanlara olan uzaklığı minimum düşman uzaklığında büyük olduğu sürece uygun spawn noktaları ekler.
+    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının düşmanlara olan uzaklığı minimum düşman uzaklığından büyük olduğu sürece uygun spawn noktaları ekler.
 
     private void GetSpawnPointsByDistanceSpawning(PlayerTeam team, ref List<SpawnPoint> suitableSpawnPoints) // Düşmana olan uzaklığa göre spawn noktasını seçmek için method
     {
@@ -84,7 +84,7 @@ public class SpawnManager : MonoBehaviour
         });
         for (int i = 0; i < _sharedSpawnPoints.Count && _sharedSpawnPoints[i].DistanceToClosestEnemy >= _minDistanceToClosestEnemy; i++)
         {
-            if (!(_sharedSpawnPoints[i].DistanceToClosestEnemy >= _minMemberDistance) && !(_sharedSpawnPoints[i].DistanceToClosestFriend >= _minMemberDistance) && _sharedSpawnPoints[i].SpawnTimer <= 0)
+            if (!(_sharedSpawnPoints[i].DistanceToClosestEnemy <= _minMemberDistance) && !(_sharedSpawnPoints[i].DistanceToClosestFriend <= _minMemberDistance) && _sharedSpawnPoints[i].SpawnTimer <= 0)
             {
                 suitableSpawnPoints.Add(_sharedSpawnPoints[i]);
             }
@@ -95,7 +95,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının dostlara olan uzaklığı maksimim dost uzaklığında küçük olduğu sürece uygun spawn noktaları ekler.
+    // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının dostlara olan uzaklığı maksimim dost uzaklığından küçük olduğu sürece uygun spawn noktaları ekler.
 
     private void GetSpawnPointsBySquadSpawning(PlayerTeam team, ref List<SpawnPoint> suitableSpawnPoints) // Dostlara olan uzaklığa göre spawn noktasını seçmek için method
     {
