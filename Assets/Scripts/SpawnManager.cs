@@ -88,11 +88,51 @@ public class SpawnManager : MonoBehaviour
             {
                 suitableSpawnPoints.Add(_sharedSpawnPoints[i]);
             }
+
+            // Spawn noktalarının seçilib seçilmeme nedenleri eklendi.
+
+            if (!(_sharedSpawnPoints[i].DistanceToClosestEnemy < _minDistanceToClosestEnemy))
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü düşmana olan uzaklık minimum düşman uzaklığından küçük değil.");
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü düşmana olan uzaklık minimum düşman uzaklığından küçük.");
+            }
+
+            if (!(_sharedSpawnPoints[i].DistanceToClosestEnemy < _minMemberDistance))
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü düşmana olan uzaklık minimum uzaklığından küçük değil.");
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü düşmana olan uzaklık minimum uzaklığından küçük.");
+            }
+
+            if (!(_sharedSpawnPoints[i].DistanceToClosestFriend < _minMemberDistance))
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü dosta olan uzaklık minimum uzaklığından küçük değil.");
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü dosta olan uzaklık minimum uzaklığından küçük.");
+            }
+            if (_sharedSpawnPoints[i].SpawnTimer <= 0)
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü bu spawn noktasında 2 saniye canlanma olmadı .");
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü bu spawn noktasında 2 saniye canlanma oldu.");
+            }
         }
             if (suitableSpawnPoints.Count <= 0)
              {
                  suitableSpawnPoints.Add(_sharedSpawnPoints[0]);
-          }  
+          }
+
+       
+        
 
     }
 
@@ -122,6 +162,33 @@ public class SpawnManager : MonoBehaviour
             if (!(_sharedSpawnPoints[i].DistanceToClosestFriend <= _minMemberDistance) && !(_sharedSpawnPoints[i].DistanceToClosestEnemy <= _minMemberDistance) && _sharedSpawnPoints[i].SpawnTimer <= 0)
             {
                 suitableSpawnPoints.Add(_sharedSpawnPoints[i]); 
+            }
+            if (!(_sharedSpawnPoints[i].DistanceToClosestFriend <= _minMemberDistance))
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü dosta olan uzaklık minimum uzaklığından küçük değil.");
+                if (!(_sharedSpawnPoints[i].DistanceToClosestEnemy < _minMemberDistance))
+                {
+                    Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü düşmana olan uzaklık minimum uzaklığından küçük değil.");
+                }
+                else
+                {
+                    Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü düşmana olan uzaklık minimum uzaklığından küçük.");
+                }
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü dosta olan uzaklık minimum uzaklığından küçük.");
+            }
+
+            
+
+            if (_sharedSpawnPoints[i].SpawnTimer <= 0)
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçildi çünkü bu spawn noktasında 2 saniye canlanma olmadı .");
+            }
+            else
+            {
+                Debug.Log(_sharedSpawnPoints[i] + " seçilmedi çünkü bu spawn noktasında 2 saniye canlanma oldu.");
             }
         }
         if (suitableSpawnPoints.Count <= 0)
