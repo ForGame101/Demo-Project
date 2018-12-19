@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     // for döngüsü oluştutarak, paylaşılan spawn noktasının sayı kadar, spawn noktalarının düşmanlara olan uzaklığı minimum düşman uzaklığından büyük olduğu sürece uygun spawn noktaları ekler.
 
     private void GetSpawnPointsByDistanceSpawning(PlayerTeam team, ref List<SpawnPoint> suitableSpawnPoints) // Düşmana olan uzaklığa göre spawn noktasını seçmek için method
-    {/*
+    {
         if (suitableSpawnPoints == null)
         {
             suitableSpawnPoints = new List<SpawnPoint>();
@@ -92,7 +92,7 @@ public class SpawnManager : MonoBehaviour
             if (suitableSpawnPoints.Count <= 0)
              {
                  suitableSpawnPoints.Add(_sharedSpawnPoints[0]);
-          }  */
+          }  
 
     }
 
