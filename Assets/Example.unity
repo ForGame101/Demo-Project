@@ -244,7 +244,7 @@ MonoBehaviour:
   Name: Osman
   PlayerTeamValue: 2
   Disabled: 0
-  _IsDead: 0
+  _IsDead: 1
   Transform: {fileID: 84125606}
 --- !u!136 &84125608
 CapsuleCollider:
